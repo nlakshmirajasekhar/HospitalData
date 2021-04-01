@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\hsptl\" />
     <Folder Include="Models\" />
   </ItemGroup>
 
