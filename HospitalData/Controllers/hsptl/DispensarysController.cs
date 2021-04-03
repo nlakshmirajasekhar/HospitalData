@@ -40,9 +40,16 @@ namespace HospitalData.Controllers.hsptl
                 switch(di.trans)
                 {
                     case 1:
-                        db.Dispensary.Add(di.dis);
-                        db.SaveChanges();
-                        msg = "ok";
+                        if (descision(di.dis.AdminssionId))
+                        {
+                            db.Dispensary.Add(di.dis);
+                            db.SaveChanges();
+                            msg = "ok";
+                        }
+                        else
+                        {
+                            msg = "not possible";
+                        }
                         break;
                     case 2:
                         var du = db.Dispensary.Where(a => a.Billno == di.dis.Billno).FirstOrDefault();
@@ -88,6 +95,18 @@ namespace HospitalData.Controllers.hsptl
                 return false;
             }
            
+        }
+        public Boolean descision(int? pid)
+        {
+            var b = false;
+            hospitalsContext db = new hospitalsContext();
+            var y = db.PatientAdmissions.Where(a => a.PatientId == pid && a.Pos == 1).FirstOrDefault();
+            if (y != null)
+            {
+                b = true;
+            }
+
+            return b;
         }
 
     }

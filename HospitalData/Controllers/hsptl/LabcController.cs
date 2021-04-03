@@ -26,8 +26,8 @@ namespace HospitalData.Controllers.hsptl
         }
 
         [HttpPost]
-        [Route("api/Labc/getLabs")]
-        public LabscWrapper getLabs([FromBody] LabscWrapper lc)
+        [Route("api/Labc/PostLabs")]
+        public LabscWrapper PostLabs([FromBody] LabscWrapper lc)
         {
             hospitalsContext db = new hospitalsContext();
             String msg = "";
